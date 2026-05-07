@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1e24bjpixpm0"]
+[gd_scene load_steps=12 format=3 uid="uid://c1e24bjpixpm0"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_f233x"]
 [ext_resource type="Shader" path="res://Shaders/Title.gdshader" id="2_801f8"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://c4nau3e1jxina" path="res://Assets/FONTS/Smooch_Sans/static/SmoochSans-Medium.ttf" id="3_mu70d"]
 [ext_resource type="Texture2D" uid="uid://b6jm6adcno4oj" path="res://Assets/Player.png" id="4_lbnjn"]
 [ext_resource type="Script" path="res://Scripts/sprite_rotate.gd" id="5_k8rgb"]
+[ext_resource type="AudioStream" uid="uid://c0rslo0axgabp" path="res://Assets/Audio/Music/Game Project Main Menu Song.mp3" id="7_1t6me"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dq4yp"]
 shader = ExtResource("2_801f8")
@@ -150,6 +151,10 @@ scale = Vector2(2.3671, 2.59049)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bi7i6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_1t6me")
+autoplay = true
 
 [connection signal="pressed" from="Play/Play Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Quit/QuitButton" to="." method="_on_quit_button_pressed"]
