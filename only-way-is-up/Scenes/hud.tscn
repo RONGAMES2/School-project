@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwokyxkuat3kt"]
+[gd_scene load_steps=7 format=3 uid="uid://cwokyxkuat3kt"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_0r073"]
 [ext_resource type="FontFile" uid="uid://dutybfv53jaj4" path="res://Assets/FONTS/Smooch_Sans/static/SmoochSans-Bold.ttf" id="2_hs4jk"]
+[ext_resource type="FontFile" uid="uid://c4nau3e1jxina" path="res://Assets/FONTS/Smooch_Sans/static/SmoochSans-Medium.ttf" id="3_6ya70"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciif7"]
 bg_color = Color(0.176419, 0.176419, 0.176419, 1)
@@ -64,3 +65,90 @@ theme_override_font_sizes/font_size = 60
 text = "Score: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Retry Menu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Retry" type="BoxContainer" parent="Retry Menu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = 60.0
+offset_right = 51.5
+offset_bottom = 158.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RetryButton" type="Button" parent="Retry Menu/Retry"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_6ya70")
+theme_override_font_sizes/font_size = 74
+text = "Retry?"
+
+[node name="Menu" type="BoxContainer" parent="Retry Menu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = 175.0
+offset_right = 51.5
+offset_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MenuButton" type="Button" parent="Retry Menu/Menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_6ya70")
+theme_override_font_sizes/font_size = 74
+text = "Menu
+"
+
+[node name="RetryText" type="BoxContainer" parent="Retry Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -290.0
+offset_right = 237.5
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Text" type="Label" parent="Retry Menu/RetryText"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_6ya70")
+theme_override_font_sizes/font_size = 52
+text = "You ded"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Retry Menu/Retry/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Retry Menu/Menu/MenuButton" to="." method="_on_menu_button_pressed"]
