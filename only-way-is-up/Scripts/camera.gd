@@ -45,4 +45,3 @@ func _process(delta: float) -> void:
 	var target_zoom_vec = Vector2(target_zoom_val, target_zoom_val)
 	zoom = zoom.lerp(target_zoom_vec, zoom_speed * delta)
 	
-	print(velocity)

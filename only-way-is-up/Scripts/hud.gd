@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 	score.text = "Score:" + str(GameManager.score)
 	if GameManager.health == 0:
 		RetryMenu.visible = true
+	
 
 
 func _on_retry_button_pressed() -> void:

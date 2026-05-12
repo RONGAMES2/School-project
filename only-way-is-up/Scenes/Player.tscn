@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dskeh4e2pbtiu"]
+[gd_scene load_steps=7 format=3 uid="uid://dskeh4e2pbtiu"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_kpjcp"]
-[ext_resource type="Texture2D" uid="uid://b6jm6adcno4oj" path="res://Assets/Player.png" id="1_xhfnw"]
+[ext_resource type="Texture2D" uid="uid://cxmkkd1owfrll" path="res://Assets/Sprites/player.png" id="2_gok1q"]
+[ext_resource type="AudioStream" uid="uid://c7i1iusru5bld" path="res://Assets/Audio/jump.wav" id="4_5i0ah"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kpjcp"]
 radius = 118.377
@@ -13,18 +14,20 @@ radius = 61.0082
 offsets = PackedFloat32Array(0, 0.00666667, 1)
 colors = PackedColorArray(0, 1, 0, 1, 0.0784314, 1, 0.0784314, 0.521569, 0, 1, 0, 0.101961)
 
-[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("trajectory_line", "hitbox") groups=["Player"]]
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("trajectory_line", "hitbox", "jump_sfx") groups=["Player"]]
 script = ExtResource("1_kpjcp")
 trajectory_line = NodePath("Line2D")
 hitbox = NodePath("Area2D")
+jump_sfx = NodePath("Sounds/jump")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." groups=["Player"]]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_kpjcp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_xhfnw")
+position = Vector2(2, -0.499998)
+scale = Vector2(0.708738, 0.696683)
+texture = ExtResource("2_gok1q")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Player"]]
 
@@ -36,6 +39,13 @@ z_index = -1
 texture_filter = 1
 default_color = Color(0.0784314, 0.654902, 0.466667, 1)
 gradient = SubResource("Gradient_apxsm")
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="jump" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("4_5i0ah")
+volume_db = -10.0
+pitch_scale = 0.43
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

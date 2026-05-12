@@ -4,8 +4,8 @@
 [ext_resource type="Shader" path="res://Shaders/Title.gdshader" id="2_801f8"]
 [ext_resource type="FontFile" uid="uid://dutybfv53jaj4" path="res://Assets/FONTS/Smooch_Sans/static/SmoochSans-Bold.ttf" id="2_ir1cw"]
 [ext_resource type="FontFile" uid="uid://c4nau3e1jxina" path="res://Assets/FONTS/Smooch_Sans/static/SmoochSans-Medium.ttf" id="3_mu70d"]
-[ext_resource type="Texture2D" uid="uid://b6jm6adcno4oj" path="res://Assets/Player.png" id="4_lbnjn"]
 [ext_resource type="Script" path="res://Scripts/sprite_rotate.gd" id="5_k8rgb"]
+[ext_resource type="Texture2D" uid="uid://cxmkkd1owfrll" path="res://Assets/Sprites/player.png" id="5_mn4jt"]
 [ext_resource type="AudioStream" uid="uid://c0rslo0axgabp" path="res://Assets/Audio/Music/Game Project Main Menu Song.mp3" id="7_1t6me"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dq4yp"]
@@ -125,7 +125,7 @@ editor_description = "Green smiling ball spinning"
 texture_filter = 1
 position = Vector2(1298, 509)
 scale = Vector2(2, 2)
-texture = ExtResource("4_lbnjn")
+texture = ExtResource("5_mn4jt")
 script = ExtResource("5_k8rgb")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

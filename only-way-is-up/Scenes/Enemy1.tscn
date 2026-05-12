@@ -1,25 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvy4p4jgamrb8"]
+[gd_scene load_steps=7 format=3 uid="uid://cvy4p4jgamrb8"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_1.gd" id="1_0sjbo"]
-[ext_resource type="Texture2D" uid="uid://cgo2maw5iso8n" path="res://Assets/enemy1.png" id="1_bwp4a"]
-[ext_resource type="Texture2D" uid="uid://cxuw62yf4s3bf" path="res://Assets/spike.png" id="3_keke5"]
+[ext_resource type="Texture2D" uid="uid://d0inu6w0nmmfy" path="res://Assets/Sprites/HEALENEMY.png" id="2_sxlyw"]
+[ext_resource type="Texture2D" uid="uid://8528c6qncu06" path="res://Assets/Sprites/DMGENEMY.png" id="3_06ac0"]
+[ext_resource type="Texture2D" uid="uid://bybrr0qvhttg2" path="res://Assets/Sprites/ENEMY1n.png" id="4_xn667"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pakhj"]
 radius = 107.005
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4uuu"]
-atlas = ExtResource("3_keke5")
-region = Rect2(0, 0, 206, 211)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2h34k"]
-atlas = ExtResource("1_bwp4a")
-region = Rect2(0, 0, 206, 211)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qi382"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i4uuu")
+"texture": ExtResource("2_sxlyw")
+}],
+"loop": true,
+"name": &"Heal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_06ac0")
 }],
 "loop": true,
 "name": &"Spike",
@@ -27,7 +28,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2h34k")
+"texture": ExtResource("4_xn667")
 }],
 "loop": true,
 "name": &"default",
@@ -45,8 +46,10 @@ sprite = NodePath("Sprite2D")
 shape = SubResource("CircleShape2D_pakhj")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, 1.66893e-06)
+scale = Vector2(1.20388, 1.25118)
 sprite_frames = SubResource("SpriteFrames_qi382")
-animation = &"Spike"
+animation = &"Heal"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 visible = false

@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3xobfdw3nmma"]
+[gd_scene load_steps=17 format=3 uid="uid://d3xobfdw3nmma"]
 
 [ext_resource type="PackedScene" uid="uid://dskeh4e2pbtiu" path="res://Scenes/Player.tscn" id="1_jjgbg"]
-[ext_resource type="Texture2D" uid="uid://drw6ebrfgq2or" path="res://Assets/platform.png" id="2_5k88t"]
 [ext_resource type="PackedScene" uid="uid://mtkea6vefooh" path="res://Scenes/GameManager.tscn" id="4_7nqhl"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="4_ddl6d"]
 [ext_resource type="PackedScene" uid="uid://cwokyxkuat3kt" path="res://Scenes/hud.tscn" id="5_m2k3o"]
@@ -11,9 +10,11 @@
 [ext_resource type="AudioStream" uid="uid://e4mmp4pp32vi" path="res://Assets/Audio/Music/Main Level Song 2.mp3" id="8_uiyjh"]
 [ext_resource type="AudioStream" uid="uid://ctuvpt4ijblw5" path="res://Assets/Audio/Music/Main Level Song 3.mp3" id="9_g0dds"]
 [ext_resource type="AudioStream" uid="uid://d0tbi32rvp3km" path="res://Assets/Audio/Music/Main Level Song 4.mp3" id="10_pssms"]
+[ext_resource type="Script" path="res://Scripts/lava.gd" id="11_b68fs"]
+[ext_resource type="Script" path="res://Scripts/LavaDMG.gd" id="12_y51gh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7u77a"]
-size = Vector2(1922, 31)
+size = Vector2(1922.22, 117.889)
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_pfqy3"]
 stream_count = 5
@@ -49,6 +50,9 @@ adjustment_brightness = 0.92
 adjustment_contrast = 1.17
 adjustment_saturation = 1.8
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ib8ye"]
+size = Vector2(10561, 2328)
+
 [node name="Main" type="Node2D"]
 
 [node name="platform" type="StaticBody2D" parent="."]
@@ -56,15 +60,16 @@ position = Vector2(11798.5, 974.538)
 scale = Vector2(4.31793, 1.58924)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
-position = Vector2(191.45, 5.5)
+position = Vector2(189.095, 48.9446)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7u77a")
 metadata/_edit_lock_ = true
 
-[node name="Icon" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(12622, 989.538)
-scale = Vector2(7.21179, 0.0880797)
-texture = ExtResource("2_5k88t")
+[node name="ColorRect" type="ColorRect" parent="platform"]
+offset_left = -772.0
+offset_top = -10.0
+offset_right = 1150.0
+offset_bottom = 108.0
 
 [node name="GameManager" parent="." instance=ExtResource("4_7nqhl")]
 
@@ -88,3 +93,21 @@ script = ExtResource("7_py5qg")
 environment = SubResource("Environment_sfuh2")
 
 [node name="HUD" parent="." instance=ExtResource("5_m2k3o")]
+
+[node name="Lava" type="ColorRect" parent="."]
+z_index = 2
+offset_left = 7182.0
+offset_top = 1134.0
+offset_right = 17736.0
+offset_bottom = 3469.0
+color = Color(1, 0.380392, 0, 1)
+script = ExtResource("11_b68fs")
+
+[node name="Area2D" type="Area2D" parent="Lava"]
+script = ExtResource("12_y51gh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lava/Area2D"]
+position = Vector2(5280.5, 1164)
+shape = SubResource("RectangleShape2D_ib8ye")
+
+[connection signal="body_entered" from="Lava/Area2D" to="Lava/Area2D" method="_on_body_entered"]

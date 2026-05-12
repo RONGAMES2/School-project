@@ -5,7 +5,7 @@ extends Area2D
 @export var sprite: AnimatedSprite2D
 var enemy_type
 
-var enemies = ["enemy", "enemy", "enemy", "spike"]
+var enemies = ["enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "enemy", "spike", "spike", "heal"]
 
 func _ready() -> void:
 	enemy_type = enemies.pick_random()
@@ -13,6 +13,8 @@ func _ready() -> void:
 		sprite.animation = "default"
 	if enemy_type == "spike":
 		sprite.animation = "Spike"
+	if enemy_type == "heal":
+		sprite.animation = "Heal"
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
@@ -25,10 +27,22 @@ func _on_body_entered(body: Node2D) -> void:
 			particles.restart()
 			particles.visible = true
 			GameManager.score += 100
+			
+		if enemy_type == "heal":
+			death_timer.start()
+			$CollisionShape2D.queue_free()
+			GameManager.playerheal.emit()
+			GameManager.enemydeath.emit(1)
+			GameManager.can_launch = true
+			sprite.visible = false
+			particles.restart()
+			particles.visible = true
+			GameManager.score += 100
 		
 		if enemy_type == "spike":
 			death_timer.start()
 			$CollisionShape2D.queue_free()
+			GameManager.damage = 1
 			GameManager.playerdamage.emit()
 			GameManager.enemydeath.emit(1)
 			GameManager.can_launch = true

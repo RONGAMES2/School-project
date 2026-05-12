@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://mtkea6vefooh"]
+[gd_scene load_steps=3 format=3 uid="uid://mtkea6vefooh"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_s7ma2"]
+[ext_resource type="AudioStream" uid="uid://dokkhwxfjbgvt" path="res://Assets/Audio/hitHurt.wav" id="2_rtvoc"]
 
-[node name="GameManager" type="Node"]
+[node name="GameManager" type="Node" node_paths=PackedStringArray("hurt_sfx")]
 script = ExtResource("1_s7ma2")
+hurt_sfx = NodePath("hurt")
 
 [node name="HitTimer" type="Timer" parent="."]
 
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_rtvoc")
+
 [connection signal="playerdamage" from="." to="." method="_on_playerdamage"]
+[connection signal="playerheal" from="." to="." method="_on_playerheal"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

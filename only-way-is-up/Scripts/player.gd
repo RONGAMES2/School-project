@@ -5,6 +5,9 @@ extends RigidBody2D
 @export var hitbox: CollisionObject2D
 @export var environment: WorldEnvironment
 
+#sounds
+@export var jump_sfx: AudioStreamPlayer2D
+
 var velocity : Vector2 = Vector2.ZERO
 var direction : Vector2 = Vector2.ZERO
 var speed: float = 1.7098642185873
@@ -49,6 +52,7 @@ func Launch():
 		trajectory_line.add_point(start_line_pos)
 		trajectory_line.add_point(end_line_pos)
 	elif Input.is_action_just_released("Launch"):
+		jump_sfx.play()
 		linear_velocity = velocity
 		apply_impulse(direction * speed)
 		Engine.time_scale = 1
@@ -59,6 +63,7 @@ func Launch():
 		
 
 func _process(delta):
+	GameManager.player_pos = Vector2(position.x, 1134)
 	if GameManager.health == 0:
 		freeze = true
 		visible = false

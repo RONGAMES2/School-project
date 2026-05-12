@@ -14,8 +14,26 @@ func _process(delta: float) -> void:
 		stream.set_sync_stream_volume(3, -60)
 		stream.set_sync_stream_volume(4, -60)
 	if GameManager.score == 1000:
-		stream.set_sync_stream_volume(0, lerp(0, -60, -0.1))
-		stream.set_sync_stream_volume(1, lerp(-60, 0, 0.1))
+		stream.set_sync_stream_volume(0, -60)
+		stream.set_sync_stream_volume(1, 0)
 		stream.set_sync_stream_volume(2, -60)
 		stream.set_sync_stream_volume(3, -60)
 		stream.set_sync_stream_volume(4, -60)
+	if GameManager.score == 5000:
+		stream.set_sync_stream_volume(0, -60)
+		stream.set_sync_stream_volume(1, -60)
+		stream.set_sync_stream_volume(2, 0)
+		stream.set_sync_stream_volume(3, -60)
+		stream.set_sync_stream_volume(4, -60)
+	if GameManager.score == 10000:
+		stream.set_sync_stream_volume(0, -60)
+		stream.set_sync_stream_volume(1, -60)
+		stream.set_sync_stream_volume(2, -60)
+		stream.set_sync_stream_volume(3, 0)
+		stream.set_sync_stream_volume(4, -60)
+	if GameManager.score == 50000:
+		stream.set_sync_stream_volume(0, -60)
+		stream.set_sync_stream_volume(1, -60)
+		stream.set_sync_stream_volume(2, -60)
+		stream.set_sync_stream_volume(3, -60)
+		stream.set_sync_stream_volume(4, 0)
