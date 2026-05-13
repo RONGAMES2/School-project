@@ -2,6 +2,6 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-			GameManager.damage = 3
+			GameManager.damage = 10
 			GameManager.playerdamage.emit()
 			
