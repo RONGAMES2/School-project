@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwokyxkuat3kt"]
+[gd_scene format=3 uid="uid://cwokyxkuat3kt"]
 
-[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_0r073"]
+[ext_resource type="Script" uid="uid://0be7700va2xy" path="res://Scripts/hud.gd" id="1_0r073"]
 [ext_resource type="FontFile" uid="uid://dutybfv53jaj4" path="res://Assets/FONTS/Smooch_Sans/static/SmoochSans-Bold.ttf" id="2_hs4jk"]
 [ext_resource type="FontFile" uid="uid://c4nau3e1jxina" path="res://Assets/FONTS/Smooch_Sans/static/SmoochSans-Medium.ttf" id="3_6ya70"]
+[ext_resource type="FontFile" uid="uid://c727q20recgf" path="res://Assets/FONTS/Smooch_Sans/static/SmoochSans-SemiBold.ttf" id="4_6fbih"]
+[ext_resource type="Script" uid="uid://btpnm7ucpk5jq" path="res://Scripts/high_score.gd" id="5_t1xeu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciif7"]
 bg_color = Color(0.176419, 0.176419, 0.176419, 1)
@@ -27,14 +29,14 @@ corner_radius_bottom_left = 10
 ProgressBar/styles/background = SubResource("StyleBoxFlat_ciif7")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_llh7y")
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=1945002502]
 script = ExtResource("1_0r073")
 
-[node name="BoxContainer" type="BoxContainer" parent="."]
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=641433650]
 offset_right = 467.0
 offset_bottom = 57.0
 
-[node name="ProgressBar" type="ProgressBar" parent="BoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="BoxContainer" unique_id=1959581542]
 modulate = Color(1, 1, 1, 0.372549)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -44,7 +46,7 @@ max_value = 3.0
 value = 3.0
 show_percentage = false
 
-[node name="ScoreContainer" type="BoxContainer" parent="."]
+[node name="ScoreContainer" type="BoxContainer" parent="." unique_id=1212168239]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -53,7 +55,7 @@ offset_right = 338.0
 offset_bottom = 72.0
 grow_horizontal = 2
 
-[node name="Score" type="Label" parent="ScoreContainer"]
+[node name="Score" type="Label" parent="ScoreContainer" unique_id=1991757599]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -66,8 +68,7 @@ text = "Score: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Retry Menu" type="Control" parent="."]
-visible = false
+[node name="Retry Menu" type="Control" parent="." unique_id=1359457381]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,7 +76,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Retry" type="BoxContainer" parent="Retry Menu"]
+[node name="Retry" type="BoxContainer" parent="Retry Menu" unique_id=1804599409]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -92,14 +93,14 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="RetryButton" type="Button" parent="Retry Menu/Retry"]
+[node name="RetryButton" type="Button" parent="Retry Menu/Retry" unique_id=631922460]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_6ya70")
 theme_override_font_sizes/font_size = 74
 text = "Retry?"
 
-[node name="Menu" type="BoxContainer" parent="Retry Menu"]
+[node name="Menu" type="BoxContainer" parent="Retry Menu" unique_id=2101936035]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -116,7 +117,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MenuButton" type="Button" parent="Retry Menu/Menu"]
+[node name="MenuButton" type="Button" parent="Retry Menu/Menu" unique_id=1468013046]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_6ya70")
@@ -124,31 +125,77 @@ theme_override_font_sizes/font_size = 74
 text = "Menu
 "
 
-[node name="RetryText" type="BoxContainer" parent="Retry Menu"]
+[node name="RetryText" type="BoxContainer" parent="Retry Menu" unique_id=1112485325]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -237.5
+offset_top = 56.865
+offset_right = 237.5
+offset_bottom = 177.865
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Text" type="Label" parent="Retry Menu/RetryText" unique_id=1995735976]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_6ya70")
+theme_override_font_sizes/font_size = 100
+text = "You ded"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreText" type="BoxContainer" parent="Retry Menu" unique_id=692891518]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -237.5
-offset_top = -290.0
-offset_right = 237.5
-offset_bottom = -169.0
+offset_left = -53.5
+offset_top = -127.435
+offset_right = 53.5
+offset_bottom = -67.43463
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
-[node name="Text" type="Label" parent="Retry Menu/RetryText"]
+[node name="ScoreLabel" type="Label" parent="Retry Menu/ScoreText" unique_id=1464508056]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_6ya70")
-theme_override_font_sizes/font_size = 52
-text = "You ded"
+theme_override_font_sizes/font_size = 50
+text = "Score: "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HighScoreText" type="BoxContainer" parent="Retry Menu" unique_id=84537677]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -303.6
+offset_right = 115.0
+offset_bottom = -224.59995
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HighScoreLabel" type="Label" parent="Retry Menu/HighScoreText" unique_id=965982588]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_6fbih")
+theme_override_font_sizes/font_size = 65
+text = "High Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_t1xeu")
 
 [connection signal="pressed" from="Retry Menu/Retry/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="Retry Menu/Menu/MenuButton" to="." method="_on_menu_button_pressed"]

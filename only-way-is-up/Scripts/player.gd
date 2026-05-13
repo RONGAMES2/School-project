@@ -64,7 +64,7 @@ func Launch():
 
 func _process(delta):
 	GameManager.player_pos = Vector2(position.x, 1134)
-	if GameManager.health == 0:
+	if GameManager.health <= 0:
 		freeze = true
 		visible = false
 	

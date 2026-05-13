@@ -14,6 +14,7 @@ var player_pos: Vector2
 
 signal playerdamage
 signal playerheal
+signal playerdeath
 
 var health: int = 3
 var damage: int = 1
@@ -23,6 +24,28 @@ var took_damage = false
 
 #Scoring
 var score: int = 0
+
+# High Scoring
+const SAVEFILE = "user://savefile.save"
+
+var highest_record = 0
+
+
+func _ready() -> void:
+	load_score()
+
+func save_score():
+	var file = FileAccess.open(SAVEFILE, FileAccess.WRITE_READ)
+	file.store_32(highest_record)
+
+func load_score():
+	var file = FileAccess.open(SAVEFILE, FileAccess.READ)
+	if FileAccess.file_exists(SAVEFILE):
+		highest_record = file.get_32()
+
+func _process(delta: float) -> void:
+	if health <= 0:
+		playerdeath.emit()
 
 func update_health():
 	if can_be_hit == true and took_damage == true:

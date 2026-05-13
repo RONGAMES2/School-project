@@ -4,14 +4,19 @@ extends CanvasLayer
 @onready var score: Label = $ScoreContainer/Score
 @onready var RetryMenu: Control = $"Retry Menu"
 
+@onready var fin_score: Label = $"Retry Menu/ScoreText/ScoreLabel"
+
 func _ready() -> void:
 	RetryMenu.visible = false
 
 func _process(delta: float) -> void:
 	healthbar.value = GameManager.health
 	score.text = "Score:" + str(GameManager.score)
-	if GameManager.health == 0:
+	fin_score.text = "Score:" + str(GameManager.score)
+	if GameManager.health <= 0:
 		RetryMenu.visible = true
+		healthbar.visible = false
+		score.visible = false
 	
 
 
