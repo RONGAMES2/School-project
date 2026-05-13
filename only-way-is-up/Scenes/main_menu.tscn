@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://c1e24bjpixpm0"]
+[gd_scene load_steps=12 format=3 uid="uid://c1e24bjpixpm0"]
 
-[ext_resource type="Script" uid="uid://dh2sutjt05ler" path="res://Scripts/main_menu.gd" id="1_f233x"]
-[ext_resource type="Shader" uid="uid://b4u5r87j0bx1j" path="res://Shaders/Title.gdshader" id="2_801f8"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_f233x"]
+[ext_resource type="Shader" path="res://Shaders/Title.gdshader" id="2_801f8"]
 [ext_resource type="FontFile" uid="uid://dutybfv53jaj4" path="res://Assets/FONTS/Smooch_Sans/static/SmoochSans-Bold.ttf" id="2_ir1cw"]
 [ext_resource type="FontFile" uid="uid://c4nau3e1jxina" path="res://Assets/FONTS/Smooch_Sans/static/SmoochSans-Medium.ttf" id="3_mu70d"]
-[ext_resource type="Script" uid="uid://da5enko2n3kpv" path="res://Scripts/sprite_rotate.gd" id="5_k8rgb"]
+[ext_resource type="Script" path="res://Scripts/sprite_rotate.gd" id="5_k8rgb"]
 [ext_resource type="Texture2D" uid="uid://cxmkkd1owfrll" path="res://Assets/Sprites/player.png" id="5_mn4jt"]
 [ext_resource type="AudioStream" uid="uid://c0rslo0axgabp" path="res://Assets/Audio/Music/Game Project Main Menu Song.mp3" id="7_1t6me"]
 
@@ -46,10 +46,10 @@ fog_height_density = 11.4526
 adjustment_enabled = true
 adjustment_saturation = 1.2
 
-[node name="Main Menu" type="CanvasLayer" unique_id=223142374]
+[node name="Main Menu" type="CanvasLayer"]
 script = ExtResource("1_f233x")
 
-[node name="Title" type="BoxContainer" parent="." unique_id=1684064715]
+[node name="Title" type="BoxContainer" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -61,7 +61,7 @@ grow_horizontal = 2
 rotation = 0.161121
 scale = Vector2(2.3671, 2.59049)
 
-[node name="Label" type="Label" parent="Title" unique_id=912790968]
+[node name="Label" type="Label" parent="Title"]
 material = SubResource("ShaderMaterial_dq4yp")
 layout_mode = 2
 size_flags_horizontal = 4
@@ -71,7 +71,7 @@ text = "Only Way is Up"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play" type="BoxContainer" parent="." unique_id=1642393349]
+[node name="Play" type="BoxContainer" parent="."]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -87,14 +87,14 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Play Button" type="Button" parent="Play" unique_id=431752282]
+[node name="Play Button" type="Button" parent="Play"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_mu70d")
 theme_override_font_sizes/font_size = 74
 text = "Play"
 
-[node name="Quit" type="BoxContainer" parent="." unique_id=268969440]
+[node name="Quit" type="BoxContainer" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_0xrv2")
 anchors_preset = 8
@@ -112,14 +112,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 
-[node name="QuitButton" type="Button" parent="Quit" unique_id=115516250]
+[node name="QuitButton" type="Button" parent="Quit"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_mu70d")
 theme_override_font_sizes/font_size = 74
 text = "Quit"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1011331934]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 editor_description = "Green smiling ball spinning"
 texture_filter = 1
 position = Vector2(1298, 509)
@@ -127,7 +127,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("5_mn4jt")
 script = ExtResource("5_k8rgb")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=187378305]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = -1
 position = Vector2(917, -95)
 amount = 100
@@ -143,15 +143,15 @@ angle_max = 720.0
 scale_amount_max = 91.91
 color = Color(0.0156863, 0.0156863, 0.0156863, 0.513726)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2073707845]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 rotation = 0.161121
 scale = Vector2(2.3671, 2.59049)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1319976321]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bi7i6")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2094943258]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_1t6me")
 autoplay = true
 

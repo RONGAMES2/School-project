@@ -46,6 +46,9 @@ func load_score():
 func _process(delta: float) -> void:
 	if health <= 0:
 		playerdeath.emit()
+	
+	if health > 3:
+		health = 3
 
 func update_health():
 	if can_be_hit == true and took_damage == true:
